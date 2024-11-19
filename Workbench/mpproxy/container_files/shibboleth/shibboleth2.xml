@@ -11,9 +11,8 @@
 
     <RequestMapper type="XML">
         <RequestMap>
-            <Host name="__CSPHOSTNAME__">
+            <Host name="__SERVERNAME__">
                 <Path name="midpoint" authType="shibboleth" requireSession="true"/>
-                <Path name="test" authType="shibboleth" requireSession="true"/>
             </Host>
         </RequestMap>
     </RequestMapper>
