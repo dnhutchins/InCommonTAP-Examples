@@ -1,4 +1,4 @@
-FROM i2incommon/comanage-registry:4.3.5-rocky9.4
+FROM i2incommon/comanage-registry:4.4.0-rocky9.4
 
 ENV COMANAGE_REGISTRY_ADMIN_FAMILY_NAME=Anderson
 ENV COMANAGE_REGISTRY_ADMIN_USERNAME=banderson
