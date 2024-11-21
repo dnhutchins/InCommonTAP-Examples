@@ -2,6 +2,7 @@ FROM i2incommon/shibboleth_sp:3.4.1_05152024_rocky9_multiarch
 
 ARG CSPHOSTNAME=localhost
 ENV CSPHOSTNAME=$CSPHOSTNAME
+ENV SERVERNAME=$CSPHOSTNAME
 
 RUN dnf -y install php php-json wget php-bcmath jq yum-utils
 
