@@ -16,6 +16,7 @@ COPY container_files/sql/createDBforMP.sql /
 RUN chown -R postgres:postgres /var/lib/pgsql/ 
 RUN echo "password" > /db-user-pwd.txt
 RUN sudo -u postgres initdb -D /var/lib/pgsql/data/ --username=postgres --pwfile=/db-user-pwd.txt
+RUN mkdir /var/run/postgresql && chown postgres:postgres /var/run/postgresql
 
 #create grouper DB
 RUN sudo -u postgres pg_ctl start -D /var/lib/pgsql/data/ \
