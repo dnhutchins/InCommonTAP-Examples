@@ -267,6 +267,7 @@ services:
       bash -c "
       cd /opt/midpoint ;
       if [ ! -z "${CSPHOSTNAME}" ]; then sed -i 's|__SERVERNAME__|${CSPHOSTNAME}|g' /opt/midpoint/mp-home-in/post-initial-objects/securityPolicy/000-security-policy.xml ; else echo 'var not set' ; fi ;
+      if [ ! -z "${CSPHOSTNAME}" ]; then sed -i 's|__SERVERNAME__|${CSPHOSTNAME}|g' /opt/midpoint/mp-home-in/post-initial-objects/SecurityPolicy.xml ; else echo 'var not set' ; fi ;
       bin/midpoint.sh init-native ;
       echo ' - - - - - - ' ;
       bin/ninja.sh -B info >/dev/null 2>/tmp/ninja.log ;

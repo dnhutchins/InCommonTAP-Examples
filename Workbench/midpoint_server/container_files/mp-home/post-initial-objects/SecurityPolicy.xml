@@ -11,7 +11,7 @@
             <httpHeader>
                 <identifier>httpHeader</identifier>
                 <usernameHeader>REMOTE_USER</usernameHeader>
-		<logoutUrl>https://__SERVERNAME__/mppSSO/Shibboleth.sso/Logout</logoutUrl>
+		<logoutUrl>https://test.workbench.incommon.org/mppSSO/Shibboleth.sso/Logout</logoutUrl>
             </httpHeader>
         </modules>
         <sequence>
