@@ -1,4 +1,4 @@
-FROM i2incommon/shibboleth_sp:3.4.1_05152024_rocky9_multiarch
+FROM i2incommon/shibboleth_sp:3.5.0_10212024_rocky9_multiarch
 
 ARG CSPHOSTNAME=localhost
 ENV CSPHOSTNAME=$CSPHOSTNAME

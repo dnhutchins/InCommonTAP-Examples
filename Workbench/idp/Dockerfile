@@ -1,4 +1,4 @@
-FROM i2incommon/shib-idp:5.1.3_20240813_rocky8_multiarch
+FROM i2incommon/shib-idp:5.1.3_20241204_rocky8_multiarch
 
 LABEL author="tier-packaging@internet2.edu <tier-packaging@internet2.edu>"
 
