@@ -1,6 +1,6 @@
 #!/bin/python
 
-containers = ["idp", "idp_ui", "idp_ui_data", "idp_ui_api", "grouper_ui", "grouper_ws", "grouper_daemon", "grouper_data", "comanage", "comanage_cron", "comanage_data", "midpoint_server", "midpoint_data", "webproxy", "mpproxy", "wordpress_server", "wordpress_data", "mq", "directory", "sources", "ad", "comanage_midpoint_data"]
+containers = ["idp", "idp_ui", "idp_ui_data", "idp_ui_api", "grouper_ui", "grouper_ws", "grouper_daemon", "grouper_data", "comanage", "comanage_cron", "comanage_data", "comanage_match", "comanage_match_data", "midpoint_server", "midpoint_data", "webproxy", "mpproxy", "wordpress_server", "wordpress_data", "mq", "directory", "sources", "ad", "comanage_midpoint_data"]
 
 print("<table><tr><th style='text-align:left;width:150px'>Container</th><th style='text-align:left'>Health Status</th></tr>")
 for container in containers:
