@@ -9,7 +9,8 @@ pushd /mdload
                                          ./loadMD.sh midPointSP /mdload/midpoint-sp.xml 0 && \
                                          ./loadMD.sh ProxySP /mdload/proxy-sp.xml 0 && \
                                          ./loadMD.sh WordPressSP /mdload/wordpress-sp.xml 0 && \
-                                         ./loadMD.sh COmanageSP /mdload/comanage-sp.xml 0
+                                         ./loadMD.sh COmanageSP /mdload/comanage-sp.xml 0 && \
+                                         ./loadMD.sh COmanageMatchSP /mdload/match-sp.xml 0
 popd
 wait
 

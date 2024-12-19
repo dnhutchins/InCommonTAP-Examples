@@ -238,6 +238,26 @@ services:
     volumes:
      - comanage_data:/var/lib/postgresql/data
 
+  comanage_match_data:
+    build: ./comanage_match_data/
+    environment:
+      POSTGRES_USER: match_user
+      POSTGRES_PASSWORD: Password1
+      POSTGRES_DB: match
+    networks:
+      net:
+        aliases:
+         - comanage-match-data
+    ports:
+      - 55432:5432
+    healthcheck:
+      test: /usr/bin/pg_isready
+      interval: 30s
+      timeout: 30s
+      retries: 3
+    volumes:
+     - comanage_match_data:/var/lib/postgresql/data
+
   comanage_midpoint_data:
     build: ./comanage_midpoint_data/
     environment:
@@ -593,6 +613,26 @@ services:
         aliases:
           - comanage-cron
 
+  comanage_match:
+    build: 
+      context: ./comanage_match/
+      args:
+        - CSPHOSTNAME
+    depends_on:
+     - comanage_match_data
+    environment:
+     - ENV
+     - USERTOKEN
+    networks:
+     - net
+    ports:
+     - 19443:443
+    healthcheck:
+      test: curl -kf https://127.0.0.1/match/ || exit 1
+      interval: 30s
+      timeout: 30s
+      retries: 3
+
   ad:
     build:
       context: ./ad/
@@ -665,6 +705,7 @@ volumes:
   grouper_data_2:
   source_data:
   comanage_data:
+  comanage_match_data:
   comanage_midpoint_data:
   comanage_mysql:
   source_mysql:
