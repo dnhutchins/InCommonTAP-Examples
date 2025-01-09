@@ -1,4 +1,4 @@
-FROM i2incommon/grouper:4.16.0
+FROM i2incommon/grouper:4.17.3
 
 LABEL author="tier-packaging@internet2.edu <tier-packaging@internet2.edu>"
 
