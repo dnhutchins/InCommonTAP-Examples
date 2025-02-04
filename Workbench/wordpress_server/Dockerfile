@@ -4,7 +4,8 @@ VOLUME /var/www/html
 
 COPY container_files/wordpress/sed.sh /root
 COPY container_files/wordpress/config-shibb.sql /root
-COPY container_files/wordpress/wp /root
+#COPY container_files/wordpress/wp /root
+RUN curl -o /root/wp --url https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && chmod +x /root/wp
 COPY container_files/wordpress/config.yml /root/.wp-cli
 COPY container_files/wordpress/wp-cli.yml /var/www/html
 COPY container_files/shibboleth/* /etc/shibboleth/
