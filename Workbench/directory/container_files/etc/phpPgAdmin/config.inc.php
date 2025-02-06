@@ -71,6 +71,15 @@
         $conf['servers'][4]['pg_dump_path'] = '/usr/bin/pg_dump';
         $conf['servers'][4]['pg_dumpall_path'] = '/usr/bin/pg_dumpall';
 
+        // COmanage Match DB
+        $conf['servers'][5]['desc'] = 'COmanage Match DB (match_user)';
+        $conf['servers'][5]['host'] = 'comanage-match-data';
+        $conf['servers'][5]['port'] = 5432;
+        //$conf['servers'][5]['sslmode'] = 'allow';
+        $conf['servers'][5]['defaultdb'] = 'match';
+        $conf['servers'][5]['pg_dump_path'] = '/usr/bin/pg_dump';
+        $conf['servers'][5]['pg_dumpall_path'] = '/usr/bin/pg_dumpall';
+
 	/* Groups definition */
 	/* Groups allow administrators to logicaly group servers together under
 	 * group nodes in the left browser tree
