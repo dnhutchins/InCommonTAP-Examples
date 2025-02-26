@@ -166,54 +166,6 @@
         </closedTasks>
     </cleanupPolicy>
     <internals>
-        <enableExperimentalCode>true</enableExperimentalCode>
-        <operationExecutionRecording>
-            <skipWhenSuccess>true</skipWhenSuccess>
-        </operationExecutionRecording>
-        <focusConstraintsChecking>
-            <skipWhenNoChange>true</skipWhenNoChange>
-            <skipWhenNoIteration>true</skipWhenNoIteration>
-        </focusConstraintsChecking>
-        <projectionConstraintsChecking>
-            <skipWhenNoChange>true</skipWhenNoChange>
-            <skipWhenNoIteration>true</skipWhenNoIteration>
-        </projectionConstraintsChecking>
-        <synchronizationSituationUpdating>
-            <skipWhenNoChange>true</skipWhenNoChange>
-        </synchronizationSituationUpdating>
-        <caching>
-            <profile>
-                <global>true</global>
-                <localRepoCache>
-                    <statistics>
-                        <classification>perCacheAndObjectType</classification>
-                    </statistics>
-                </localRepoCache>
-                <globalRepoCache>
-                    <timeToLive>60</timeToLive>
-                    <objectTypeSettings>
-                        <objectType>SystemConfigurationType</objectType>
-                        <objectType>ArchetypeType</objectType>
-                        <objectType>ObjectTemplateType</objectType>
-                        <objectType>SecurityPolicyType</objectType>
-                        <objectType>ValuePolicyType</objectType>
-                        <objectType>ResourceType</objectType>
-                        <objectType>RoleType</objectType>
-                        <objectType>OrgType</objectType>
-                        <objectType>ServiceType</objectType>
-                        <objectType>ShadowType</objectType>
-                    </objectTypeSettings>
-                    <statistics>
-                        <classification>perCacheAndObjectType</classification>
-                    </statistics>
-                </globalRepoCache>
-            </profile>
-        </caching>
-        <repository>
-            <statistics>
-                <classification>perOperationAndObjectType</classification>
-            </statistics>
-        </repository>
         <tracing>
             <profile>
                 <name>performance</name>
