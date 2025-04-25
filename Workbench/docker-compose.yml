@@ -662,6 +662,31 @@ services:
       - 636:636
       - 3268-3269:3268-3269
 
+  dozzproxy:
+    build:
+      context: ./dozzproxy/
+      args:
+        - CSPHOSTNAME
+    networks:
+     - net
+    ports:
+     - 6443:443
+
+  dozzle:
+    image: amir20/dozzle:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 8081:8080
+    environment:
+      DOZZLE_BASE: /dozzle
+      DOZZLE_AUTH_PROVIDER: forward-proxy
+      DOZZLE_AUTH_HEADER_USER: eppn
+      DOZZLE_AUTH_HEADER_EMAIL: mail
+      DOZZLE_AUTH_HEADER_NAME: displayName
+    networks:
+      - net
+
 networks:
   net:    
     driver: bridge
