@@ -279,7 +279,7 @@ services:
      - comanage_midpoint_data:/var/lib/postgresql/data
 
   data_init:
-    image: evolveum/midpoint:${MP_VER:-4.9.2}-rockylinux
+    image: evolveum/midpoint:${MP_VER:-4.9.3}-rockylinux
     depends_on:
       midpoint_data:
         condition: service_healthy
@@ -351,7 +351,7 @@ services:
      - midpoint_data:/var/lib/postgresql/data
 
   midpoint_server:
-    image: evolveum/midpoint:${MP_VER:-4.9.2}-rockylinux
+    image: evolveum/midpoint:${MP_VER:-4.9.3}-rockylinux
     container_name: midpoint_server
     hostname: midpoint-container
     depends_on:
