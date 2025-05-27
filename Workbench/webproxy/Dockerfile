@@ -15,6 +15,7 @@ COPY container_files/httpd/refresh/index.php /var/www/html/refresh/
 COPY container_files/httpd/proxy.conf /etc/httpd/conf.d/
 COPY container_files/httpd/shib.conf /etc/httpd/conf.d/
 COPY container_files/httpd/ssl.conf /etc/httpd/conf.d/
+COPY container_files/httpd/auth-users /etc/httpd/conf/ 
 COPY container_files/httpd/index.html /var/www/html/
 COPY container_files/httpd/midPoint-doc.html /var/www/html/
 COPY container_files/httpd/csp_logo.jpg /var/www/html/

@@ -386,6 +386,8 @@ services:
      - mp_shibboleth_sp_keys.jks
     volumes:
      - midpoint_home:/opt/midpoint/var
+     - hr_export:/opt/midpoint/var/resource_files/hr
+     - sis_export:/opt/midpoint/var/resource_files/sis
      - type: bind
        source: ./midpoint_server/container_files/csv/source-hr.csv
        target: /opt/midpoint/csv/source-hr.csv
@@ -684,8 +686,68 @@ services:
       DOZZLE_AUTH_HEADER_USER: eppn
       DOZZLE_AUTH_HEADER_EMAIL: mail
       DOZZLE_AUTH_HEADER_NAME: displayName
+      DOZZLE_ENABLE_ACTIONS: true
+      DOZZLE_ENABLE_SHELL: true
     networks:
       - net
+    healthcheck:
+      test: ["CMD", "/dozzle", "healthcheck"]
+      interval: 3s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
+
+  hr:
+    image: python:3.12
+    hostname: hr
+    mem_limit: 256m
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=/src/hr_app.py
+      - DATABASE=/var/employees.db
+      - PYTHONDONTWRITEBYTECODE=1
+    networks:
+      - net
+    working_dir: /src
+    volumes:
+      - ./hr_app:/src
+      - hr_export:/src/exported_data
+      - hr_data:/var
+    entrypoint: >
+      bash -c "
+      [ ! -f "exported_data/hr_data.csv" ] && cp export-initial.csv exported_data/hr_data.csv || echo "CSV_EXPORT_ALREADY_INITIALIZED";
+      apt-get update;
+      apt-get install -y sqlite3;
+      pip install --upgrade pip==25.0.1;
+      pip install -r /src/requirements.txt;
+      gunicorn --bind 0.0.0.0:5000 --workers 4 hr_app:app
+      "
+
+  sis:
+    image: python:3.12
+    hostname: sis
+    mem_limit: 256m
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=/src/sis_app.py
+      - DATABASE=/var/students.db
+      - PYTHONDONTWRITEBYTECODE=1
+    networks:
+      - net
+    working_dir: /src
+    volumes:
+      - ./sis_app:/src
+      - sis_export:/src/exported_data
+      - sis_data:/var
+    entrypoint: >
+      bash -c "
+      [ ! -f "exported_data/sis_data.csv" ] && cp export-initial.csv exported_data/sis_data.csv || echo "CSV_EXPORT_ALREADY_INITIALIZED";
+      apt-get update;
+      apt-get install -y sqlite3;
+      pip install --upgrade pip==25.0.1;
+      pip install -r /src/requirements.txt;
+      gunicorn --bind 0.0.0.0:5000 --workers 4 sis_app:app
+      "
 
 networks:
   net:    
@@ -740,3 +802,7 @@ volumes:
   idpui_data:
   ad_samba_data:
   ad_samba_cfg:
+  hr_export:
+  hr_data:
+  sis_export:
+  sis_data:

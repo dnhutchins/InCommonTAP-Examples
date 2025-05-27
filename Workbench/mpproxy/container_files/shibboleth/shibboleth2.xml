@@ -13,6 +13,8 @@
         <RequestMap>
             <Host name="__SERVERNAME__">
                 <Path name="midpoint" authType="shibboleth" requireSession="true"/>
+                <Path name="hr" authType="shibboleth" requireSession="true"/>
+                <Path name="sis" authType="shibboleth" requireSession="true"/>
             </Host>
         </RequestMap>
     </RequestMapper>
