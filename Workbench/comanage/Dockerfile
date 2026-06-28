@@ -25,7 +25,7 @@ ENV COMANAGE_REGISTRY_EMAIL_ACCOUNT_PASSWORD=BNAp6WlvsI4iXK3ush8pwPD2QKHDYQ09ti+
 #ENV SHIBBOLETH_SP_METADATA_PROVIDER_XML=sdf
 #ENV SHIBBOLETH_SP_SAMLDS_URL=thing
 
-RUN yum -y update && yum -y install --setopt=tsflags=nodocs epel-release python-pip && pip install awscli && pip install --upgrade pip
+RUN yum -y update --exclude=nginx-filesystem && yum -y install --setopt=install_weak_deps=False --setopt=tsflags=nodocs epel-release python-pip && pip install awscli && pip install --upgrade pip
 
 ARG maintainer=my
 ARG imagename=comanage

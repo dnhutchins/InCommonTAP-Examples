@@ -4,7 +4,7 @@ ARG CSPHOSTNAME=localhost
 ENV CSPHOSTNAME=$CSPHOSTNAME
 ENV SERVERNAME=$CSPHOSTNAME
 
-RUN dnf -y install php php-json wget php-bcmath jq yum-utils
+RUN dnf -y install --setopt=install_weak_deps=False php php-json wget php-bcmath jq yum-utils
 
 COPY container_files/httpd/midpoint.conf /etc/httpd/conf.d/
 COPY container_files/httpd/ssl.conf /etc/httpd/conf.d/

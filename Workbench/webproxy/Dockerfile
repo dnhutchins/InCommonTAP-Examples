@@ -4,7 +4,7 @@ ARG CSPHOSTNAME=localhost
 ENV CSPHOSTNAME=$CSPHOSTNAME
 
 #RUN dnf -y install cronie php php-json wget php-bcmath jq yum-utils mod_proxy_ajp
-RUN dnf -y install cronie php php-json wget php-bcmath jq yum-utils
+RUN dnf -y install --setopt=install_weak_deps=False cronie php php-cli php-json wget php-bcmath jq yum-utils
 
 RUN wget https://getcomposer.org/installer -O composer-installer.php
 RUN php composer-installer.php --filename=composer --install-dir=/usr/local/bin
